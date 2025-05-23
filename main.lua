@@ -31,6 +31,13 @@ local GunfightArena = Instance.new("Frame")
 local TextLabel_11 = Instance.new("TextLabel")
 local UICorner_8 = Instance.new("UICorner")
 
+local AutoloadToggle = Instance.new("Frame")
+local UICorner_Toggle = Instance.new("UICorner")
+local ToggleButton = Instance.new("TextButton")
+local UICorner_ToggleBtn = Instance.new("UICorner")
+local ToggleLabel = Instance.new("TextLabel")
+local ToggleStroke = Instance.new("UIStroke")
+
 local ArsenalStroke = Instance.new("UIStroke")
 local PlanksStroke = Instance.new("UIStroke")
 local RivalsStroke = Instance.new("UIStroke")
@@ -350,9 +357,68 @@ SelectedScript.Text = "No Script Selected"
 SelectedScript.TextColor3 = Color3.fromRGB(255, 255, 255)
 SelectedScript.TextSize = 28.000
 
+AutoloadToggle.Name = "AutoloadToggle"
+AutoloadToggle.Parent = Frame
+AutoloadToggle.BackgroundColor3 = Color3.fromRGB(17, 18, 20)
+AutoloadToggle.BackgroundTransparency = 0.900
+AutoloadToggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoloadToggle.BorderSizePixel = 0
+AutoloadToggle.Position = UDim2.new(0.55, 0, 0.55, 0)
+AutoloadToggle.Size = UDim2.new(0, 280, 0, 50)
+AutoloadToggle.Visible = false
+
+ToggleStroke.Parent = AutoloadToggle
+ToggleStroke.Color = Color3.fromRGB(26, 29, 37)
+ToggleStroke.Thickness = 2
+ToggleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+UICorner_Toggle.CornerRadius = UDim.new(0, 25)
+UICorner_Toggle.Parent = AutoloadToggle
+
+ToggleLabel.Name = "ToggleLabel"
+ToggleLabel.Parent = AutoloadToggle
+ToggleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ToggleLabel.BackgroundTransparency = 1.000
+ToggleLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ToggleLabel.BorderSizePixel = 0
+ToggleLabel.Position = UDim2.new(0.05, 0, 0, 0)
+ToggleLabel.Size = UDim2.new(0, 160, 0, 50)
+ToggleLabel.Font = Enum.Font.Nunito
+ToggleLabel.Text = "Autoload:"
+ToggleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleLabel.TextSize = 20.000
+ToggleLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+ToggleButton.Name = "ToggleButton"
+ToggleButton.Parent = AutoloadToggle
+ToggleButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
+ToggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ToggleButton.BorderSizePixel = 0
+ToggleButton.Position = UDim2.new(0.65, 0, 0.15, 0)
+ToggleButton.Size = UDim2.new(0, 80, 0, 35)
+ToggleButton.Font = Enum.Font.Nunito
+ToggleButton.Text = "ON"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.TextSize = 18.000
+ToggleButton.TextWrapped = true
+
+UICorner_ToggleBtn.CornerRadius = UDim.new(0, 15)
+UICorner_ToggleBtn.Parent = ToggleButton
+
 local selectedOption = nil
 local selectedColor = Color3.fromRGB(140, 155, 208)
 local defaultColor = Color3.fromRGB(26, 29, 37)
+local autoloadEnabled = true
+
+local function updateToggleAppearance()
+	if autoloadEnabled then
+		ToggleButton.BackgroundColor3 = Color3.fromRGB(140, 155, 208)
+		ToggleButton.Text = "ON"
+	else
+		ToggleButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+		ToggleButton.Text = "OFF"
+	end
+end
 
 local function selectScript(scriptFrame, scriptName)
 	ArsenalStroke.Color = defaultColor
@@ -362,10 +428,17 @@ local function selectScript(scriptFrame, scriptName)
 	UniversalStroke.Color = defaultColor
 	GunfightArenaStroke.Color = defaultColor
 
+	AutoloadToggle.Visible = false
+
 	if scriptFrame then
 		scriptFrame:FindFirstChildOfClass("UIStroke").Color = selectedColor
 		selectedOption = scriptName
 		SelectedScript.Text = scriptName
+		
+		if scriptName == "Rivals" then
+			AutoloadToggle.Visible = true
+			updateToggleAppearance()
+		end
 	else
 		selectedOption = nil
 		SelectedScript.Text = "No Script Selected"
@@ -392,13 +465,13 @@ end)
 
 CounterBlox.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(CounterBlox, "CounterBlox")
+		selectScript(CounterBlox, "IN DEVELOPEMENT")
 	end
 end)
 
 GunfightArena.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(GunfightArena, "Gunfight Arena")
+		selectScript(GunfightArena, "IN DEVELOPEMENT")
 	end
 end)
 
@@ -406,6 +479,11 @@ Universal.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
 		selectScript(Universal, "Universal")
 	end
+end)
+
+ToggleButton.MouseButton1Click:Connect(function()
+	autoloadEnabled = not autoloadEnabled
+	updateToggleAppearance()
 end)
 
 Loadbtn.MouseButton1Click:Connect(function()
@@ -416,12 +494,19 @@ Loadbtn.MouseButton1Click:Connect(function()
 		elseif selectedOption == "Planks" then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
 		elseif selectedOption == "Rivals" then
+			local value = ""
+			if autoloadEnabled then
+				value = true
+			else
+				value = false
+			end
+			getgenv().autoload = value
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Rivals%20Beta.lua"))()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
 		elseif selectedOption == "CounterBlox" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/NervigeMuecke/Z3US-V2/refs/heads/main/Games/Z3US%20Counterblox.lua"))() 
+			print("IN DEVELOPEMENT") 
 		elseif selectedOption == "Gunfight Arena" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20GunfightArena.lua"))()
+			print("IN DEVELOPEMENT") 
 		elseif selectedOption == "Universal" then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua"))()
 		end
@@ -431,6 +516,9 @@ Loadbtn.MouseButton1Click:Connect(function()
 		SelectedScript.Text = "No Script Selected"
 	end
 end)
+
 CloseButton.MouseButton1Click:Connect(function()
 	ScreenGui:Destroy()
 end)
+
+updateToggleAppearance()
