@@ -471,7 +471,7 @@ end)
 
 GunfightArena.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(GunfightArena, "GunfightArena")
+		selectScript(GunfightArena, "Gunfight Arena")
 	end
 end)
 
