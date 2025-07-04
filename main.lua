@@ -536,7 +536,7 @@ end)
 
 counterblox.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		selectScript(counterblox, "IN DEVELOPMENT")
+		selectScript(counterblox, "Counterblox")
 	end
 end)
 
@@ -571,8 +571,8 @@ loadbtn.MouseButton1Click:Connect(function()
 			getgenv().autoload = autoloadEnabled
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Rivals%20Beta.lua"))()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
-		elseif selectedOption == "IN DEVELOPMENT" then
-			print("IN DEVELOPMENT")
+		elseif selectedOption == "Counterblox" then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
 		elseif selectedOption == "Gunfight Arena" then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua"))()
 		elseif selectedOption == "Universal" then
