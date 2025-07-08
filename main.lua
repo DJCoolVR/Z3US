@@ -560,7 +560,7 @@ end)
 loadbtn.MouseButton1Click:Connect(function()
 	if selectedOption then
 		if selectedOption == "Arsenal" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20A3%20CTE.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua"))()
 		elseif selectedOption == "Planks" then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
 		elseif selectedOption == "Rivals" then
