@@ -3,7 +3,6 @@ local z3USLoader = Instance.new("ScreenGui")
 z3USLoader.Name = "Z3US Loader"
 z3USLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 z3USLoader.Parent = game:GetService("CoreGui")
-z3USLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 z3USLoader.ResetOnSpawn = false
 z3USLoader.DisplayOrder = 999999
 z3USLoader.IgnoreGuiInset = true
@@ -583,7 +582,7 @@ loadbtn.MouseButton1Click:Connect(function()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
 		elseif selectedOption == "Counterblox" then
 			if version == "New" then
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox%20New.lua"))()
+				loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/256e863c25cb837e"))()
 			else
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
 			end
