@@ -1,11 +1,11 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/other.lua"))()
-local z3USLoader = Instance.new("ScreenGui")
-z3USLoader.Name = "Z3US Loader"
-z3USLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-z3USLoader.Parent = game:GetService("CoreGui")
-z3USLoader.ResetOnSpawn = false
-z3USLoader.DisplayOrder = 999999
-z3USLoader.IgnoreGuiInset = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/z3us/refs/heads/main/Games/other.lua"))()
+local ThatOneGuysLoader = Instance.new("ScreenGui")
+ThatOneGuysLoader.Name = "ThatOneGuys Loader"
+ThatOneGuysLoader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ThatOneGuysLoader.Parent = game:GetService("CoreGui")
+ThatOneGuysLoader.ResetOnSpawn = false
+ThatOneGuysLoader.DisplayOrder = 999999
+ThatOneGuysLoader.IgnoreGuiInset = true
 
 local frame = Instance.new("Frame")
 frame.Name = "Frame"
@@ -149,7 +149,7 @@ textLabel5.BorderSizePixel = 0
 textLabel5.FontFace = Font.new("rbxasset://fonts/families/Nunito.json")
 textLabel5.Position = UDim2.fromScale(0.628, 0.821)
 textLabel5.Size = UDim2.fromOffset(200, 50)
-textLabel5.Text = "Thank you for using Z3US <3"
+textLabel5.Text = "Thank you for using ThatOneGuys <3"
 textLabel5.TextColor3 = Color3.fromRGB(40, 58, 85)
 textLabel5.TextSize = 34
 textLabel5.Parent = frame
@@ -449,7 +449,7 @@ local uICornerToggleBtn = Instance.new("UICorner")
 uICornerToggleBtn.CornerRadius = UDim.new(0, 15)
 uICornerToggleBtn.Parent = toggleButton
 
-frame.Parent = z3USLoader
+frame.Parent = ThatOneGuysLoader
 
 local selectedOption = nil
 local selectedColor = Color3.fromRGB(140, 155, 208)
@@ -618,25 +618,25 @@ end)
 loadbtn.MouseButton1Click:Connect(function()
 	if selectedOption then
 		if selectedOption == "Arsenal" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Arsenal%20Beta.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Arsenal%20Beta.lua"))()
 		elseif selectedOption == "Planks" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Planks.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Planks.lua"))()
 		elseif selectedOption == "Hypershot" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Hypershot.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Hypershot.lua"))()
 		elseif selectedOption == "Rivals" then
 			getgenv().autoload = autoloadEnabled
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Rivals%20Beta.lua"))()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Test.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Rivals%20Beta.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/Test.lua"))()
 		elseif selectedOption == "Counterblox" then
 			if version == "New" then
 				loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/256e863c25cb837e"))()
 			else
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Counterblox.lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Counterblox.lua"))()
 			end
 		elseif selectedOption == "Gunfight Arena" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Gunfight%20Arena.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Gunfight%20Arena.lua"))()
 		elseif selectedOption == "Universal" then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/Z3US/refs/heads/main/Games/Z3US%20Universal.lua"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/blackowl1231/ThatOneGuys/refs/heads/main/Games/ThatOneGuys%20Universal.lua"))()
 		end
 	else
 		textLabel6.Text = "Please select a script!"
@@ -646,7 +646,7 @@ loadbtn.MouseButton1Click:Connect(function()
 end)
 
 closeButton.MouseButton1Click:Connect(function()
-	z3USLoader:Destroy()
+	ThatOneGuysLoader:Destroy()
 end)
 
 updateToggleAppearance()
